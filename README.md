@@ -52,6 +52,43 @@ todo review
 todo weekly
 ```
 
+## 目标管理
+
+### 创建新目标
+
+```bash
+# AI 自动拆解里程碑
+todo goal add "健身计划" -d "每周锻炼3次，体重减到70kg" --deadline 2026-08-01
+
+# 不使用 AI，手动管理里程碑
+todo goal add "读书计划" -d "每月读两本书" --no-ai-decompose
+```
+
+### 在 Obsidian 中修改目标
+
+目标文件是普通 Markdown，存放在 `TodoList/Goals/` 目录下，可以直接在 Obsidian 中打开编辑：
+
+- **改截止日期** → 修改 `截止日期：xxxx-xx-xx` 那一行
+- **增删里程碑** → 直接编辑 `## 🏁 里程碑` 下面的 `- [ ]` 条目
+- **改目标描述** → 修改 `## 📖 描述` 下面的文字
+
+改完保存即可，系统会读取最新内容来生成每日任务。
+
+### 查看所有目标
+
+```bash
+todo goal list
+```
+
+## 在 Obsidian 中使用
+
+1. 打开 Obsidian，仓库路径为 `/Users/qbq/Documents/Obsidian Vault`
+2. 在左侧文件浏览器找到 `TodoList/` 文件夹
+3. 每天查看 `TodoList/Daily/` 下当天日期的文件（如 `2026-03-31.md`）
+4. 直接点击复选框勾选已完成的任务
+5. 目标文件中的里程碑也可以同样勾选
+6. 文件之间通过 `[[韩语学习]]` 等双向链接互相跳转
+
 ## 工作流程
 
 1. **设定阶段性目标** → AI 拆解为里程碑
