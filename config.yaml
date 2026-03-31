@@ -9,7 +9,7 @@ todo_root: "TodoList"
 # DeepSeek AI 配置
 ai:
   provider: "deepseek"
-  api_key: ""  # 请填入你的 DeepSeek API Key
+  api_key: "sk-ebc1859980ad432ab0ba9daa817b7d56" # 请填入你的 DeepSeek API Key
   base_url: "https://api.deepseek.com"
   model: "deepseek-chat"
 
