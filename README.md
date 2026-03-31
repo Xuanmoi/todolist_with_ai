@@ -4,47 +4,53 @@
 
 ## 环境部署（首次安装）
 
-如果是第一次使用，或换了新电脑，需要先完成以下步骤。
-
 ### 前置条件
 
 - macOS 系统
 - Python 3.9+（macOS 自带，终端输入 `python3 --version` 确认）
-- [Obsidian](https://obsidian.md/) 已安装，Vault 路径为 `/Users/qbq/Documents/Obsidian Vault`
+- [Obsidian](https://obsidian.md/) 已安装
 
-> 如果 Vault 路径不同，修改 `config.yaml` 中的 `vault_path` 即可。
+### 一键安装
 
-### 安装步骤
+打开终端，进入项目目录，运行安装脚本：
 
 ```bash
-# 1. 进入项目目录
 cd /Users/qbq/learn/todolist
-
-# 2. 创建 Python 虚拟环境
-python3 -m venv .venv
-
-# 3. 激活虚拟环境
-source .venv/bin/activate
-
-# 4. 安装依赖
-pip install --upgrade pip
-pip install -e .
-
-# 5. 初始化 Obsidian 目录结构
-todo init
-
-# 6. （可选）注册每日定时任务，每天 9:05 自动运行
-cp com.obsidian-todo-ai.daily.plist ~/Library/LaunchAgents/
-launchctl load ~/Library/LaunchAgents/com.obsidian-todo-ai.daily.plist
+./install.sh
 ```
+
+脚本会自动完成以下所有步骤：
+
+1. 检查系统环境（macOS、Python 版本）
+2. 交互式询问你的 **Obsidian Vault 路径**（直接回车使用默认值）
+3. 交互式询问你的 **DeepSeek API Key**（可跳过，后续补充）
+4. 创建 Python 虚拟环境并安装所有依赖
+5. 生成 `config.yaml` 配置文件
+6. 初始化 Obsidian 中的 TodoList 目录结构
+7. 注册每日 09:05 定时任务
 
 安装完成后，可以运行 `todo --help` 验证是否成功。
 
+### 手动安装（备选）
+
+如果一键安装脚本不适用，也可以手动执行：
+
+```bash
+cd /Users/qbq/learn/todolist
+python3 -m venv .venv
+source .venv/bin/activate
+pip install --upgrade pip
+pip install -e .
+todo init
+```
+
+然后手动编辑 `config.yaml` 填入 Vault 路径和 API Key。
+
 ## 快速开始
 
-### 1. 配置 DeepSeek API Key
+### 配置 DeepSeek API Key
 
-编辑项目根目录下的 `config.yaml`，填入你的 DeepSeek API Key：
+如果安装时跳过了 API Key，可以随时编辑 `config.yaml` 补充：
 
 ```yaml
 ai:
@@ -55,7 +61,7 @@ ai:
 >
 > 不配置也能使用，但每日任务会使用通用模板，无法根据你的目标和完成情况智能生成。
 
-### 2. 启动项目
+### 启动项目
 
 每次使用前，需要在终端中进入项目目录并激活虚拟环境：
 
@@ -67,8 +73,9 @@ source .venv/bin/activate
 激活成功后，终端提示符前会出现 `(.venv)` 标记，此时就可以使用 `todo` 命令了。
 
 > **虚拟环境只影响当前终端窗口**，关闭窗口自动失效，不会影响系统其他部分。
+> 每天 9:05 的定时任务不需要你手动激活，脚本内部会自动处理。
 
-### 3. 关闭项目
+### 关闭项目
 
 使用完毕后，在终端中输入：
 
@@ -77,14 +84,6 @@ deactivate
 ```
 
 或者直接关闭终端窗口即可。
-
-### 4. 初始化（仅首次使用）
-
-首次使用时，运行以下命令创建 Obsidian 中的目录结构：
-
-```bash
-todo init
-```
 
 ## 每日任务
 
