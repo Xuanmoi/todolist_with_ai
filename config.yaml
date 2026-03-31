@@ -1,0 +1,23 @@
+# Obsidian Todo AI 配置文件
+
+# Obsidian Vault 路径
+vault_path: "/Users/qbq/Documents/Obsidian Vault"
+
+# Todo 文件在 Vault 中的根目录
+todo_root: "TodoList"
+
+# DeepSeek AI 配置
+ai:
+  provider: "deepseek"
+  api_key: ""  # 请填入你的 DeepSeek API Key
+  base_url: "https://api.deepseek.com"
+  model: "deepseek-chat"
+
+# 定时任务配置
+schedule:
+  daily_run_time: "09:05"
+
+# 用户偏好
+preferences:
+  language: "zh-CN"
+  timezone: "Asia/Shanghai"

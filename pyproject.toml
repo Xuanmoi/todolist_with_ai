@@ -1,0 +1,24 @@
+[build-system]
+requires = ["setuptools>=68.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "obsidian-todo-ai"
+version = "0.1.0"
+description = "AI-powered TodoList manager integrated with Obsidian"
+requires-python = ">=3.9"
+dependencies = [
+    "click>=8.1.7",
+    "python-frontmatter>=1.1.0",
+    "pyyaml>=6.0.1",
+    "openai>=1.30.0",
+    "rich>=13.7.0",
+    "schedule>=1.2.1",
+]
+
+[project.scripts]
+todo = "src.cli:cli"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["src*"]
