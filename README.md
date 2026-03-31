@@ -2,6 +2,44 @@
 
 智能 TodoList 管理系统，与 Obsidian 无缝集成，通过 DeepSeek AI 自动生成每日任务、分析完成情况、给出优化建议。
 
+## 环境部署（首次安装）
+
+如果是第一次使用，或换了新电脑，需要先完成以下步骤。
+
+### 前置条件
+
+- macOS 系统
+- Python 3.9+（macOS 自带，终端输入 `python3 --version` 确认）
+- [Obsidian](https://obsidian.md/) 已安装，Vault 路径为 `/Users/qbq/Documents/Obsidian Vault`
+
+> 如果 Vault 路径不同，修改 `config.yaml` 中的 `vault_path` 即可。
+
+### 安装步骤
+
+```bash
+# 1. 进入项目目录
+cd /Users/qbq/learn/todolist
+
+# 2. 创建 Python 虚拟环境
+python3 -m venv .venv
+
+# 3. 激活虚拟环境
+source .venv/bin/activate
+
+# 4. 安装依赖
+pip install --upgrade pip
+pip install -e .
+
+# 5. 初始化 Obsidian 目录结构
+todo init
+
+# 6. （可选）注册每日定时任务，每天 9:05 自动运行
+cp com.obsidian-todo-ai.daily.plist ~/Library/LaunchAgents/
+launchctl load ~/Library/LaunchAgents/com.obsidian-todo-ai.daily.plist
+```
+
+安装完成后，可以运行 `todo --help` 验证是否成功。
+
 ## 快速开始
 
 ### 1. 配置 DeepSeek API Key
